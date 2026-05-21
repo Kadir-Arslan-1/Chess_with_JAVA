@@ -1,9 +1,6 @@
 import org.example.ChessBoard;
 import org.example.ChessPiece;
-import org.example.pieces.Knight;
-import org.example.pieces.Pawn;
-import org.example.pieces.King;
-import org.example.pieces.Queen;
+import org.example.pieces.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -132,6 +129,17 @@ class ChessBoardTest {
 
         Optional<ChessPiece> result2 = board.getPieceAt("d3");
         assertEquals(Optional.of(knight1), result2);
+    }
+    @Test
+    public void canMoveF1BishopToH3() {
+        ChessPiece bishop1 = new Bishop(White);
+        board.addPiece(bishop1, "f1");
+        board.movePiece(bishop1, "h3");
+        Optional<ChessPiece> result1 = board.getPieceAt("f1");
+        assertEquals(Optional.empty(), result1);
+
+        Optional<ChessPiece> result2 = board.getPieceAt("h3");
+        assertEquals(Optional.of(bishop1), result2);
     }
 
     @Test
